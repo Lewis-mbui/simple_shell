@@ -22,6 +22,9 @@ char **args_split(char *args, int argc)
 		token = strtok(NULL, " \n");
 	}
 	argv[i] = NULL;
+
+	if (builtins_handle(argv, argc))
+		return (NULL);
 	if (!check_for_file(argv[0]))
 	{
 		full_path = path_for_file(argv[0]);
