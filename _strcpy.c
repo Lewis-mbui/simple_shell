@@ -9,9 +9,11 @@
 
 char *_strcpy(char *dest, const char *src)
 {
+	size_t length, i;
+
 	if (src == NULL)
 		return (NULL);
-	size_t length = 0;
+	length = 0;
 
 	/* Calculate the length of the source string*/
 	while (src[length] != '\0')
@@ -28,7 +30,7 @@ char *_strcpy(char *dest, const char *src)
 		exit(-1);
 	}
 	/* Copy the source string to the destination */
-	for (size_t i = 0; i <= length; i++)
+	for (i = 0; i <= length; i++)
 	{
 		dest[i] = src[i];
 	}

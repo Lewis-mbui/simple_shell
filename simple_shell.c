@@ -11,8 +11,9 @@ int main(int ac, char **av, char **env)
 	char *cmd = NULL, *cmd_cpy = NULL;
 	size_t n;
 	bool pipe_source = false;
-	int argc, status;
-	char **argv = NULL;
+
+	av = NULL;
+	ac = 0;
 
 	while (1 && !pipe_source)
 	{
@@ -26,13 +27,13 @@ int main(int ac, char **av, char **env)
 			exit(EXIT_FAILURE);
 		}
 		cmd_cpy = _strcpy(cmd_cpy, cmd);
-		argc = args_count(cmd);
-		argv = args_split(cmd_cpy, argc);
+		ac = args_count(cmd);
+		av = args_split(cmd_cpy, ac);
 
-		if (argv == NULL)
+		if (av == NULL)
 			continue;
 
-		execute(argv, env);
+		execute(av, env);
 	}
 	return (0);
 }

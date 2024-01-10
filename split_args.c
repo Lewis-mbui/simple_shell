@@ -5,6 +5,7 @@
  * @argc: number of command line argumets
  * Return: a list of the command line arguments
  **/
+
 char **args_split(char *args, int argc)
 {
 	int i;
@@ -14,6 +15,7 @@ char **args_split(char *args, int argc)
 
 	argv = malloc(sizeof(char *) * (argc + 1));
 	token = strtok(args, " \n");
+
 	for (i = 0; token != NULL; i++)
 	{
 		argv[i] = _strcpy(NULL, token);
@@ -23,7 +25,6 @@ char **args_split(char *args, int argc)
 	if (!check_for_file(argv[0]))
 	{
 		full_path = path_for_file(argv[0]);
-
 		if (full_path == NULL)
 		{
 			perror("Error with accessing file");

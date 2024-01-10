@@ -7,12 +7,15 @@
  **/
 char *_strconcat(char *str1, char *str2)
 {
+	size_t len1, len2, i;
+	char *result = NULL;
+
 	if (str1 == NULL || str2 == NULL)
 		return (NULL);
 	/* Calculate the length of the concatenated string */
-	size_t len1 = 0;
+	len1 = 0;
 
-	size_t len2 = 0;
+	len2 = 0;
 
 	while (str1[len1] != '\0')
 		len1++;
@@ -20,7 +23,7 @@ char *_strconcat(char *str1, char *str2)
 	while (str2[len2] != '\0')
 		len2++;
 	/* Allocate memory for the concatenated string */
-	char *result = (char *)malloc((len1 + len2 + 1) * sizeof(char));
+	result = (char *)malloc((len1 + len2 + 1) * sizeof(char));
 
 	if (result == NULL)
 	{
@@ -29,7 +32,6 @@ char *_strconcat(char *str1, char *str2)
 		exit(-1);
 	}
 	/* Copy the first string to the result */
-	size_t i;
 
 	for (i = 0; i < len1; i++)
 		result[i] = str1[i];

@@ -7,12 +7,12 @@
 char *path_for_file(char *file_name)
 {
 	int i = 0, argc = 0;
-	char *path_val = NULL, *token = NULL;
+	char *path_val = NULL, *path_val_cpy = NULL, *token = NULL;
 	char *fp1 = NULL, *fp2 = NULL;
 	char **argv = NULL;
 
 	path_val = get_PATH("PATH");
-	char *path_val_cpy = _strcpy(NULL, path_val);
+	path_val_cpy = _strcpy(NULL, path_val);
 
 	token = strtok(path_val, ":");
 	while (token != NULL)
