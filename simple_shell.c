@@ -8,12 +8,11 @@
  **/
 int main(int ac, char **av, char **env)
 {
-	char *cmd = NULL, *cmd_cpy = NULL, *full_path;
+	char *cmd = NULL, *cmd_cpy = NULL;
 	size_t n;
 	bool pipe_source = false;
 	int argc, status;
 	char **argv = NULL;
-	pid_t child_pid;
 
 	while (1 && !pipe_source)
 	{
@@ -30,20 +29,9 @@ int main(int ac, char **av, char **env)
 		argc = args_count(cmd);
 		argv = args_split(cmd_cpy, argc);
 
-		if (!check_for_file(argv[0]))
-		{
-			full_path = path_for_file(argv[0]);
-			if (full_path == NULL)
-			{
-				perror("Error with accessing file");
-				continue;
-			}
-			else
-			{
-				free(argv[0]);
-				argv[0] = full_path;
-			}
-		}
+		if (argv == NULL)
+			continue;
+
 		execute(argv, env);
 	}
 	return (0);
