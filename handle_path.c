@@ -36,8 +36,13 @@ char *path_for_file(char *file_name)
 		fp2 = _strconcat(fp1, file_name);
 		if (check_for_file(fp2))
 		{
+			free_vector(argv, argc);
+			free(fp1);
 			return (fp2);
 		}
+		free(fp1);
+		free(fp2);
 	}
+	free_vector(argv, argc);
 	return (NULL);
 }

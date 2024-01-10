@@ -6,7 +6,7 @@
  * @env: list of environment variables and values
  * Return: always 0
  **/
-int main(int ac, char **av, char **env)
+int main(int ac, char **av, char **environ)
 {
 	char *cmd = NULL, *cmd_cpy = NULL;
 	size_t n;
@@ -33,7 +33,10 @@ int main(int ac, char **av, char **env)
 		if (av == NULL)
 			continue;
 
-		execute(av, env);
+		execute(av, environ);
+
+		free_vector(av, ac);
 	}
+	free(cmd);
 	return (0);
 }
